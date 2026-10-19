@@ -400,7 +400,15 @@ const Q = [
 {s:"kal",k:"ersan",q:"Aşağıdakilerden hangisi patent kapsamı dışında kalır?",o:["Keşifler, bilimsel teoriler ve matematik metotları", "Sanayiye uygulanabilen yeni bir makine", "Yeni bir üretim aracı", "Tekniğin bilinen durumunu aşan bir buluş"],a:0,e:"Keşifler, bilimsel teoriler, oyun kuralları, sanat eserleri ve bilgisayar yazılımları patent kapsamı dışındadır."},
 {s:"kal",k:"ersan",q:"Aşağıdakilerden hangisi bir buluşun patentle korunabilmesi için aranan şartlardan biri değildir?",o:["Yenilik", "Tekniğin bilinen durumunun aşılması", "Sanayiye uygulanabilirlik", "Yüksek maliyetli olması"],a:3,e:"Patent şartları: yenilik, tekniğin bilinen durumunun aşılması, sanayiye uygulanabilirlik."},
 {s:"kal",k:"ersan",q:"Patentle kıyaslandığında daha kısa zamanda ve daha az masrafla alınabilen sınai koruma hakkı hangisidir?",o:["Faydalı model", "Marka", "Coğrafi işaret", "Telif hakkı"],a:0,e:"Faydalı model özellikle küçük ve orta ölçekli işletmeleri teşvik eder."},
-{s:"kal",k:"ersan",q:"Bünyan halısı ve Kütahya çinisi hangi kavrama örnektir?",o:["Patent", "Marka", "Coğrafi işaret", "Faydalı model"],a:2,e:"Coğrafi işaretli ürünler ait oldukları bölgenin dışında üretilemez."}
+{s:"kal",k:"ersan",q:"Bünyan halısı ve Kütahya çinisi hangi kavrama örnektir?",o:["Patent", "Marka", "Coğrafi işaret", "Faydalı model"],a:2,e:"Coğrafi işaretli ürünler ait oldukları bölgenin dışında üretilemez."},
+// ISO 9001 ve TSE
+{s:"kal",k:"ersan",q:"ISO 9001 nedir?",o:["Kalite yönetim sistemi standardı", "Çevre yönetim sistemi standardı", "İş sağlığı ve güvenliği kanunu", "Avrupa Birliği uygunluk belgesi"],a:0,e:"ISO 9001; tasarımdan satış sonrası hizmete kadar tüm aşamaları kapsayan, sürekli gelişmeyi hedefleyen kalite yönetim sistemi standardıdır."},
+{s:"kal",k:"ersan",q:"Tüm sektörlerde, tasarım aşamasından başlayarak üretim, pazarlama ve satış sonrası hizmetlere kadar tüm aşamaları kapsayan ve sürekli gelişmeyi hedefleyen kalite yönetim sistemi standardı hangisidir?",o:["TR EN ISO 9001", "HACCP", "JIT", "CE"],a:0,e:"Kitap s.206."},
+{s:"kal",k:"ersan",q:"TSE kısaltmasının açılımı hangisidir?",o:["Türk Standartları Enstitüsü", "Türk Sanayi Enstitüsü", "Türkiye Sertifika Ekibi", "Türk Standart Ekonomisi"],a:0,e:"TSE, ulusal standartları belirleyen kurumdur."},
+{s:"kal",k:"ersan",q:"TR EN ISO 9001 ifadesindeki \"TR\" ve \"ISO\" neyi ifade eder?",o:["TR: Türk Standardı – ISO: Standardı yayınlayan kurumun (International Organization for Standardization) baş harfleri", "TR: Türkiye Ruhsatı – ISO: İş Sağlığı Organizasyonu", "TR: Türk Ticaret Odası – ISO: İstanbul Sanayi Odası", "TR: Teknik Rapor – ISO: İhracat Standartları Ofisi"],a:0,e:"TR Türk Standardı, EN Avrupa Normu, ISO standardı yayınlayan kurumun baş harfleri."},
+{s:"kal",k:"ersan",q:"Mal ve hizmetlerin özelliklerini ve esaslarını belirten teknik metne ne ad verilir?",o:["Standart", "Patent", "Marka", "Faydalı model"],a:0,e:"Kitap s.205."},
+{s:"kal",k:"ersan",q:"Aşağıdakilerden hangisi uluslararası standartlardan biri değildir?",o:["ISO 9001", "CEN", "CE", "TSE"],a:3,e:"TSE ulusal standarttır. Uluslararası: ISO 9001, CEN, CE, JIT, HACCP."},
+{s:"kal",k:"ersan",q:"Kitaba göre işletmelerin ISO standartlarına uyması için hangisi doğrudur?",o:["Zorunludur", "Yalnızca gıda sektöründe gereklidir", "Yalnızca ihracat yapan işletmeler için gereklidir", "İsteğe bağlıdır, önemi yoktur"],a:0,e:"Kitapta \"İşletmelerin ISO standartlarına uyması zorunludur.\" yazıyor (s.206)."}
 ];
 
 
@@ -411,7 +419,8 @@ const STORE="uo-quiz-v2";
 let st={mode:"sinav",queues:{},stats:{},sound:true};
 try{Object.assign(st,JSON.parse(localStorage.getItem(STORE))||{})}catch(e){}
 try{const old=JSON.parse(localStorage.getItem("uo-duo-v1"));if(old&&old.stats&&!Object.keys(st.stats).length)st.stats=old.stats}catch(e){}
-if(st.v!==8){st.mode="sinav";st.queues={};st.v=8}
+if(st.v!==8&&st.v!==9){st.mode="sinav"}
+if(st.v!==9){st.queues={};st.v=9}
 const persist=()=>{try{localStorage.setItem(STORE,JSON.stringify(st))}catch(e){}};
 const qs=id=>st.stats[id]||(st.stats[id]={w:0,r:0});
 const isWeak=id=>{const t=st.stats[id];return !!t&&t.w>=2&&t.w>=t.r};
